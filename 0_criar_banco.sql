@@ -184,4 +184,3 @@ CREATE TABLE silver_trecho (
     FOREIGN KEY (id_viagem) REFERENCES silver_viagem(id_viagem),
     CONSTRAINT uniq_viagem_sequencia UNIQUE (id_viagem, sequencia_trecho) -- Constraint 2: UNIQUE
 );
-);
