@@ -1,4 +1,3 @@
-
 # 🏛️ Pipeline de Dados e Analytics: Gastos Públicos com Viagens a Serviço 🇧🇷
 
 **Projeto Avaliativo — Análise de Dados com Python [T1]**
@@ -133,31 +132,31 @@ No ambiente analítico (`3_analise.ipynb`), a base relacional Silver é consulta
 1. **Os 5 órgãos com maior custo total?**
 
    * *Abordagem Analítica:* Agregação por `nome_orgao_superior` na entidade `silver_viagem`, aplicando a métrica de soma sobre a coluna calculada `valor_total` e ranqueamento em ordem decrescente (Top 5).
-   * 📊 **Gráfico:** [Top 5 Órgãos com Maior Custo Total](graficos/1_top5_orgaos_custo.png)
+   * 📊 **Gráfico:** [Top 5 Órgãos com Maior Custo Total](graficos/grafico_1_top_5_orgaos_federais_por_custo_total_de_viagens.png)
 2. **Os 3 destinos com maior custo médio por viagem?**
 
    * *Abordagem Analítica:* Junção relacional (`INNER JOIN`) entre as tabelas `silver_viagem` e `silver_trecho` para correlacionar o custo total com a localidade final (`destino_cidade`), calculando a média aritmética por município.
-   * 📊 **Gráfico:** [Top 3 Destinos com Maior Custo Médio](graficos/2_top3_destinos_custo_medio.png)
+   * 📊 **Gráfico:** [Top 3 Destinos com Maior Custo Médio](graficos/grafico_2_destinos_maior_custo_medio.png)
 3. **A viagem de maior duração e seu custo total?**
 
    * *Abordagem Analítica:* Busca do valor máximo sobre o atributo derivado `duracao_dias` (diferença em dias entre `data_fim` e `data_inicio`), extraindo simultaneamente o indicador de custo financeiro associado.
-   * 📊 **Gráfico:** [Viagem de Maior Duração e Custo Associado](graficos/3_viagem_maior_duracao.png)
+   * 📊 **Gráfico:** [Viagem de Maior Duração e Custo Associado](graficos/grafico_3_viagem_maior_duracao.png)
 4. **Qual o tipo de pagamento com maior valor médio?**
 
    * *Abordagem Analítica:* Agrupamento da entidade `silver_pagamento` pela dimensão `tipo_pagamento`, computando a média ponderada dos valores liberados (ex.: Diárias vs. Passagens vs. Devoluções).
-   * 📊 **Gráfico:** [Média de Valor por Tipo de Pagamento](graficos/4_tipo_pagamento_valor_medio.png)
+   * 📊 **Gráfico:** [Média de Valor por Tipo de Pagamento](graficos/grafico_4_valor_medio_pagamento.png)
 5. **Qual o meio de transporte mais usado nos trechos?**
 
    * *Abordagem Analítica:* Análise de frequência (`COUNT`) sobre a coluna `meio_transporte` em `silver_trecho`, evidenciando a distribuição percentual entre modais (Aéreo, Rodoviário, Fluvial, etc.).
-   * 📊 **Gráfico:** [Distribuição dos Meios de Transporte](graficos/5_meio_transporte_mais_usado.png)
+   * 📊 **Gráfico:** [Distribuição dos Meios de Transporte](graficos/grafico_5_meio_transporte.png)
 6. **Qual UF de destino aparece em mais trechos?**
 
    * *Abordagem Analítica:* Agregação geográfica por `destino_uf` em `silver_trecho`, identificando os polos estatais que concentram o maior fluxo de deslocamento de servidores públicos.
-   * 📊 **Gráfico:** [Concentração de Trechos por UF de Destino](graficos/6_uf_destino_mais_frequente.png)
+   * 📊 **Gráfico:** [Concentração de Trechos por UF de Destino](graficos/grafico_6_uf_destino.png)
 7. **Qual órgão pagou mais no total?**
 
    * *Abordagem Analítica:* Agrupamento em `silver_pagamento` pelo atributo `nome_orgao_pagador`, somando o volume de repasses para auditar os centros de custo de maior impacto orçamentário.
-   * 📊 **Gráfico:** [Top Órgãos Pagadores no Volume Total](graficos/7_orgao_pagador_maior_volume.png)
+   * 📊 **Gráfico:** [Top Órgãos Pagadores no Volume Total](graficos/grafico_7_orgao_maior_gasto.png)
 
 > 💡 **Materialização Gold:** Para consumo por futuras ferramentas de BI (como Power BI ou Metabase), a consulta agregada principal foi persistida no SGBD sob duas formas: como tabela autônoma (`gold_resumo_gastos`) e como uma visão dinâmica (`CREATE VIEW vw_gold_viagens_consolidada`).
 
@@ -192,7 +191,7 @@ python -m venv venv
 
 # 2. Ativação do ambiente virtual:
 # Windows (PowerShell/CMD):
-venv\Scripts ctivate
+venv\Scripts\activate
 # Linux / macOS:
 source venv/bin/activate
 
